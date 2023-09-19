@@ -1,10 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Players</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
 </head>
+
+
 <body>
     <h1>Players page</h1>
+
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Title</th>
+            <th>Race</th>
+            <th>Profession</th>
+            <th>Birthday</th>
+            <th>Banned</th>
+            <th>Experience</th>
+            <th>Level</th>
+            <th>Until Next Level</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="player : ${players}">
+            <td th:text="${player.id}"></td>
+            <td>
+                <a th:href="@{'/player/' + ${player.id}}" th:text="${player.name}"></a>
+            </td>
+            <td th:text="${player.title}"></td>
+            <td th:text="${player.race}"></td>
+            <td th:text="${player.profession}"></td>
+            <td th:text="${#dates.format(player.birthday, 'yyyy-MM-dd')}"></td>
+            <td th:text="${player.banned} ? 'Yes' : 'No'"></td>
+            <td th:text="${player.experience}"></td>
+            <td th:text="${player.level}"></td>
+            <td th:text="${player.untilNextLevel}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+
 </body>
 </html>

@@ -1,4 +1,4 @@
-package org.javarush.oleksandr.entity;
+package org.javarush.oleksandr.l7mvclive.model;
 
 public enum Race {
     HUMAN,

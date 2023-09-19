@@ -1,6 +1,6 @@
 <template>
 
-  <div>
+  <div class="w-100">
     <Table hoverable>
       <table-head>
         <table-head-cell>Name</table-head-cell>
@@ -15,7 +15,10 @@
       </table-head>
       <table-body>
         <table-row v-for="player in players" v-bind:key="player.id">
-          <table-cell> {{ player.name }}</table-cell>
+          <table-cell>
+            <router-link :to="{ name: 'player',  params: { id: player.id } }">{{ player.name }}</router-link>
+          </table-cell>
+
           <table-cell> {{ player.title }}</table-cell>
           <table-cell> {{ player.race }}</table-cell>
           <table-cell> {{ player.profession }}</table-cell>
@@ -25,7 +28,6 @@
           <table-cell> {{ player.level }}</table-cell>
           <table-cell> {{ player.untilNextLevel }}</table-cell>
         </table-row>
-
       </table-body>
     </Table>
 
@@ -34,6 +36,7 @@
 
 <script lang="ts">
 import {Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow} from 'flowbite-vue'
+
 import {defineComponent} from 'vue'
 import axios from "axios";
 import type Player from "@/types/Player";

@@ -2,7 +2,7 @@ import type {Race} from "@/types/Race";
 import type {Profession} from "@/types/Profession";
 
 
-export default interface Player {
+export interface Player {
     id: number;
     name: string;
     title: string;

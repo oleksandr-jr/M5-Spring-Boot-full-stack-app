@@ -13,5 +13,8 @@
     "@scss": ["src/styles/scss"],
     "@img": ["src/assests/images"],
     "@": ["src"],
+    "@/*": [
+      "src/*"
+    ]
   }
 }

@@ -1,9 +1,9 @@
 export enum Race {
-    HUMAN,
-    DWARF,
-    ELF,
-    GIANT,
-    ORC,
-    TROLL,
-    HOBBIT
+    HUMAN = 'Human',
+    DWARF = 'Dwarf',
+    ELF = 'Elf',
+    GIANT = 'Giant',
+    ORC = 'Orc',
+    TROLL = 'Troll',
+    HOBBIT = 'Hobbit'
 }

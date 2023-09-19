@@ -1,10 +1,10 @@
 export enum Profession {
-    WARRIOR,
-    ROGUE,
-    SORCERER,
-    CLERIC,
-    PALADIN,
-    NAZGUL,
-    WARLOCK,
-    DRUID
+    WARRIOR= 'Warrior',
+    ROGUE= 'Rogue',
+    SORCERER = 'Sorcerer',
+    CLERIC = 'Cleric',
+    PALADIN = 'Paladin',
+    NAZGUL = 'Nazgul',
+    WARLOCK = 'Warlock',
+    DRUID = 'Druid'
 }

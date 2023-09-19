@@ -16,19 +16,14 @@
 <body>
 
 <div class="container my-5">
-    <h3> Update player</h3>
-    <a type="button" th:href="@{'/player/' + ${player.getId()}}" class="btn btn-link"><- player profile</a>
+    <h3> Create player</h3>
+    <a type="button" th:href="@{'/player/list'}" class="btn btn-link"><- Players list</a>
     <div class="card">
         <div class="card-body">
             <div class="col-md-8">
-                <form action="#" th:action="@{/player/update/{id}(id=${player.getId()})}" th:object="${player}"
+                <form action="#" th:action="@{/player/create}" th:object="${player}"
                       method="post">
                     <div class="row">
-
-                        <div class="form-group col-md-8">
-                            <label for="id" class="col-form-label">Id</label>
-                            <div th:text="*{id}" id="id"></div>
-                        </div>
 
                         <div class="form-group col-md-8">
                             <label for="name" class="col-form-label">Name</label>
@@ -98,24 +93,8 @@
                         </div>
 
 
-
-
                         <div class="form-group col-md-8">
-                            <input type="submit" class="btn btn-primary" value="Update">
-
-                            <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
-                                DELETE
-                            </button>
-
-                            <div class="collapse" id="collapseExample">
-                                <div class="card card-body">
-                                    <p>Are you sure?</p>
-                                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
-                                        NO
-                                    </button>
-                                    <a type="button" th:href="@{'/player/delete/' + ${player.getId()}}" class="btn btn-danger">YES</a>
-                                </div>
-                            </div>
+                            <input type="submit" class="btn btn-success" value="Create">
                         </div>
 
                     </div>

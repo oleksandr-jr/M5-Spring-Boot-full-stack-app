@@ -12,6 +12,7 @@
 
 
       <label for="birthday">Birthday:</label>
+
       <input class="form-input" id="birthday" type="date" v-model="player.birthday" label="Birthday"/>
 
       <Input class="form-input" v-model="player.level" placeholder="enter player level" label="Level"/>
@@ -19,7 +20,7 @@
       <Checkbox class="form-input" v-model="player.banned" label="Banned"/>
 
 
-      <Button @click="createPlayer" color="default">Create</Button>
+      <Button @click="updatePlayer" color="default">Update</Button>
 
     </div>
   </div>
@@ -35,11 +36,12 @@ import {Profession} from "@/types/Profession";
 
 
 export default {
-  name: "UpdatePlayerForm",
+  name: "PlayerUpdateForm",
   // eslint-disable-next-line vue/no-reserved-component-names
   components: {Checkbox, Input, Select, Button},
   data() {
     return {
+      id: 0,
       player: {} as Player,
     }
   },
@@ -49,8 +51,9 @@ export default {
     }
   },
   methods: {
-    createPlayer() {
-      axios.post("http://localhost:8080/api/player/create", {
+    updatePlayer() {
+      axios.put("http://localhost:8080/api/player/update", {
+            id: this.player.id,
             name: this.player.name,
             title: this.player.title,
             race: this.player.race,
@@ -64,6 +67,24 @@ export default {
       })
           .catch(function (error) {
             console.log(error);
+          });
+    },
+    getPlayerProfile() {
+      const path = "http://localhost:8080/api/player/get/" + this.id;
+      axios
+          .get(path)
+          .then((res) => {
+            this.player.id = res.data.id;
+            this.player.name = res.data.name;
+            this.player.title = res.data.title;
+            this.player.race = res.data.race;
+            this.player.profession = res.data.profession;
+            this.player.birthday = new Date(res.data.birthday).toISOString().slice(0,10);
+            this.player.level = res.data.level;
+            this.player.banned = res.data.banned;
+          })
+          .catch((error) => {
+            console.error(error);
           });
     },
 
@@ -84,7 +105,12 @@ export default {
 
       return ProfessionArray;
     },
-  }
+
+  },
+  created() {
+    this.id = Number(this.$route.params.id);
+    this.getPlayerProfile();
+  },
 }
 </script>
 

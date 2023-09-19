@@ -1,15 +1,22 @@
-package org.javarush.oleksandr.entity;
+package org.javarush.oleksandr.l7mvclive.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "player")
 public class Player {
@@ -22,25 +29,11 @@ public class Player {
     private Race race;
     @Enumerated(EnumType.STRING)
     private Profession profession;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
     private Boolean banned;
     private Integer experience;
     private Integer level;
     private Integer untilNextLevel;
-
-    public Player() {
-    }
-
-    public Player(String name, String title, Race race, Profession profession, Date birthday, Boolean banned, Integer experience, Integer level, Integer untilNextLevel) {
-        this.name = name;
-        this.title = title;
-        this.race = race;
-        this.profession = profession;
-        this.birthday = birthday;
-        this.banned = banned;
-        this.experience = experience;
-        this.level = level;
-        this.untilNextLevel = untilNextLevel;
-    }
 
 }
