@@ -1,0 +1,17 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ],
+  "paths": {
+    "@components": ["src/components"],
+    "@scss": ["src/styles/scss"],
+    "@img": ["src/assests/images"],
+    "@": ["src"],
+  }
+}
